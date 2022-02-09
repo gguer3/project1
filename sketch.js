@@ -118,7 +118,7 @@ function draw() {
     endShape();
 
     //wave motion
-    if (oscillate == 50 || oscillate < 0){
+    if (oscillate == 40 || oscillate < 0){
         by = -by;
       }
       oscillate += by;
