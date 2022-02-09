@@ -4,26 +4,103 @@ function setup() {
 
 numDuck = 1;    //counter for number of ducks
 let history = [];   //array to store history of data where the mouse has been
+//splice array ?
   
 function draw() {
     
     /*========================================================
         BACKGROUND */
+    //LAND
     background(208, 240, 192);
-    // Define the curve points as JavaScript objects
-      let p1 = { x: 0, y: (2*windowHeight)/8 };
-      let p2 = { x: windowWidth/12, y:(2*windowHeight)/8 };
-      let p3 = { x: (3*windowWidth)/12, y: (4*windowHeight)/8 };
-      let p4 = { x: (4*windowWidth)/12, y: (3*windowHeight)/8 };
-      let p5 = { x: (5*windowWidth)/12, y: (6*windowHeight)/8 };
-      let p6 = { x: (7*windowWidth)/12, y: (6*windowHeight)/8 };
-      let p7 = { x: (8*windowWidth)/12, y: (7*windowHeight)/8 };
-      let p8 = { x: (9*windowWidth)/12, y: (9*windowHeight)/8};
-      let p9 = { x: (7*windowWidth)/12, y: windowHeight };
     
+    row = windowWidth/8;
+    col = windowHeight/8;
+
+    //grass
+    noFill();
+    stroke(79,166,79);
+    strokeWeight(2);
+    strokeJoin(BEVEL);
+
+    beginShape();
+    vertex(row-10, col-10);
+    vertex(row, col);
+    vertex(row+10, col-10);
+    endShape();
+    beginShape();
+    vertex((4*row)-10, col-10);
+    vertex((4*row), col);
+    vertex((4*row)+10, col-10);
+    endShape();
+    beginShape();
+    vertex((3*row)-10, (2*col)-10);
+    vertex((3*row), (2*col));
+    vertex((3*row)+10, (2*col)-10);
+    endShape();
+    beginShape();
+    vertex((6*row)-10, (2*col)-10);
+    vertex((6*row), (2*col));
+    vertex((6*row)+10, (2*col)-10);
+    endShape();
+    beginShape();
+    vertex((4*row)-10, (4*col)-10);
+    vertex((4*row), (4*col));
+    vertex((4*row)+10, (4*col)-10);
+    endShape();
+    beginShape();
+    vertex((6*row)-10, (5*col)-10);
+    vertex((6*row), (5*col));
+    vertex((6*row)+10, (5*col)-10);
+    endShape();
+    beginShape();
+    vertex((7*row)-10, (7*col)-10);
+    vertex((7*row), (7*col));
+    vertex((7*row)+10, (7*col)-10);
+    endShape();
+    beginShape();
+    vertex((7*row)-10, (4*col)-10);
+    vertex((7*row), (4*col));
+    vertex((7*row)+10, (4*col)-10);
+    endShape();
+    beginShape();
+    vertex((7*row)-10, col-10);
+    vertex((7*row), col);
+    vertex((7*row)+10, col-10);
+    endShape();
+
+    //POND
+    // Define the curve points as JavaScript objects
+    let p1 = { x: 0, y: (2*windowHeight)/8 };
+    let p2 = { x: windowWidth/12, y:(2*windowHeight)/8 };
+    let p3 = { x: (3*windowWidth)/12, y: (4*windowHeight)/8 };
+    let p4 = { x: (4*windowWidth)/12, y: (3*windowHeight)/8 };
+    let p5 = { x: (5*windowWidth)/12, y: (6*windowHeight)/8 };
+    let p6 = { x: (7*windowWidth)/12, y: (6*windowHeight)/8 };
+    let p7 = { x: (8*windowWidth)/12, y: (7*windowHeight)/8 };
+    let p8 = { x: (9*windowWidth)/12, y: (9*windowHeight)/8};
+    let p9 = { x: (7*windowWidth)/12, y: windowHeight };
+
+    //shoreline
+    fill(223,247,250);
+    stroke(223,247,250);
+    beginShape();
+    curveVertex(p1.x,p1.y);
+    curveVertex(p1.x,p1.y);
+    curveVertex(p2.x,p2.y-10);
+    curveVertex(p3.x,p3.y-10);
+    curveVertex(p4.x,p4.y-10);
+    curveVertex(p5.x,p5.y-10);
+    curveVertex(p6.x,p6.y-10);
+    curveVertex(p7.x,p7.y-10);
+    curveVertex(p8.x,p8.y-10);
+    curveVertex(p9.x,p9.y-10);
+    curveVertex(p9.x,p9.y-10);
+    endShape();
+
+    //water
     fill(173,216,230);
     stroke(173,216,230);
-    triangle(p1.x, p1.y, 0, windowHeight, p9.x, p9.y)
+    triangle(p1.x, p1.y, 0, windowHeight, p9.x, p9.y);
     beginShape();
     curveVertex(p1.x,p1.y);
     curveVertex(p1.x,p1.y);
@@ -37,12 +114,10 @@ function draw() {
     curveVertex(p9.x,p9.y);
     curveVertex(p9.x,p9.y);
     endShape();
-      //make pond oscillate
-      //add grass
-      //add waves
+    //make pond oscillate or add more texture ?
     
     
-    /*================================================
+    /*===========================================================
         DRAW DUCKS */
     //add data to the history array
     var v = createVector(mouseX, mouseY);
@@ -160,9 +235,8 @@ function draw() {
     }
     
     
-  }
+}
   
 function mouseClicked() {
     numDuck = numDuck + 1;
-    console.log(numDuck);
 }
