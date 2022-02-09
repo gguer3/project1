@@ -102,7 +102,7 @@ function draw() {
     //water
     fill(173,216,230);
     stroke(173,216,230);
-    triangle(p1.x, p1.y, 0, windowHeight, p9.x, p9.y);
+    triangle(p1.x, p1.y, 0, windowHeight, p9.x, p9.y+oscillate);
     beginShape();
     curveVertex(p1.x,p1.y);
     curveVertex(p1.x,p1.y);
