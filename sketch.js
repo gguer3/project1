@@ -5,6 +5,8 @@ function setup() {
 numDuck = 1;    //counter for number of ducks
 let history = [];   //array to store history of data where the mouse has been
 //splice array ?
+oscillate = 0;  //variable for y coordinates of pond
+by = 1;  //increment for variable above
   
 function draw() {
     
@@ -86,15 +88,15 @@ function draw() {
     beginShape();
     curveVertex(p1.x,p1.y);
     curveVertex(p1.x,p1.y);
-    curveVertex(p2.x,p2.y-10);
-    curveVertex(p3.x,p3.y-10);
-    curveVertex(p4.x,p4.y-10);
-    curveVertex(p5.x,p5.y-10);
-    curveVertex(p6.x,p6.y-10);
-    curveVertex(p7.x,p7.y-10);
-    curveVertex(p8.x,p8.y-10);
-    curveVertex(p9.x,p9.y-10);
-    curveVertex(p9.x,p9.y-10);
+    curveVertex(p2.x,p2.y-10+oscillate);
+    curveVertex(p3.x,p3.y-10+oscillate);
+    curveVertex(p4.x,p4.y-10+oscillate);
+    curveVertex(p5.x,p5.y-10+oscillate);
+    curveVertex(p6.x,p6.y-10+oscillate);
+    curveVertex(p7.x,p7.y-10+oscillate);
+    curveVertex(p8.x,p8.y-10+oscillate);
+    curveVertex(p9.x,p9.y-10+oscillate);
+    curveVertex(p9.x,p9.y-10+oscillate);
     endShape();
 
     //water
@@ -104,17 +106,23 @@ function draw() {
     beginShape();
     curveVertex(p1.x,p1.y);
     curveVertex(p1.x,p1.y);
-    curveVertex(p2.x,p2.y);
-    curveVertex(p3.x,p3.y);
-    curveVertex(p4.x,p4.y);
-    curveVertex(p5.x,p5.y);
-    curveVertex(p6.x,p6.y);
-    curveVertex(p7.x,p7.y);
-    curveVertex(p8.x,p8.y);
-    curveVertex(p9.x,p9.y);
-    curveVertex(p9.x,p9.y);
+    curveVertex(p2.x,p2.y+oscillate);
+    curveVertex(p3.x,p3.y+oscillate);
+    curveVertex(p4.x,p4.y+oscillate);
+    curveVertex(p5.x,p5.y+oscillate);
+    curveVertex(p6.x,p6.y+oscillate);
+    curveVertex(p7.x,p7.y+oscillate);
+    curveVertex(p8.x,p8.y+oscillate);
+    curveVertex(p9.x,p9.y+oscillate);
+    curveVertex(p9.x,p9.y+oscillate);
     endShape();
-    //make pond oscillate or add more texture ?
+
+    //wave motion
+    if (oscillate == 50 || oscillate < 0){
+        by = -by;
+      }
+      oscillate += by;
+      console.log(oscillate);
     
     
     /*===========================================================
